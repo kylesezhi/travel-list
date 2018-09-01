@@ -1,16 +1,15 @@
 module Lib
-    ( getFiles
+    ( getFullFilePath
     ) where
 
-getFiles :: [String] -> [String]
-getFiles files = filter isMdFile files
+-- readTodoFiles :: [String] -> String -> IO [String]
+-- readTodoFiles files directory = map (\x -> readFile directory ++ x) files
 
-isMdFile :: String -> Bool
-isMdFile text = drop (length text - 3) text == ".md"
+getFullFilePath :: [String] -> String -> [String]
+getFullFilePath files directory = map (\x -> directory ++ x) files
 
-data ToDoFile = ToDoFile {
-    filename :: String
-    question :: String
-    todos :: [String]
-    include :: Bool
-} deriving (Show)
+data ToDoFile = ToDoFile { filename :: String
+    , question :: String
+    , todos :: [String]
+    , include :: Bool
+    } deriving (Show)
