@@ -6,4 +6,4 @@ import System.Directory
 main :: IO ()
 main = do
   files <- getDirectoryContents "./lists"
-  print (getFiles files)
+  print $ getFiles files

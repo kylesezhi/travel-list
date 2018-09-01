@@ -2,8 +2,8 @@ module Lib
     ( getFiles
     ) where
 
--- someFunc :: IO ()
--- someFunc = putStrLn "someFunc"
-
 getFiles :: [String] -> [String]
-getFiles files = filter (\x -> x /= "." && x /= "..") files
+getFiles files = filter isMdFile files
+
+isMdFile :: String -> Bool
+isMdFile text = drop (length text - 3) text == ".md"
