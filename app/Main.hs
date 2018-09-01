@@ -5,5 +5,5 @@ import System.Directory
 
 main :: IO ()
 main = do
-  files <- getDirectoryContents "./lists"
-  print $ getFiles files
+  files <- listDirectory "./lists"
+  print files
