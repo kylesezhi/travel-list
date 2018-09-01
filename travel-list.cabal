@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 625fc31857cc425d2e4046807800746ba209e408a3bb3c7554f01285f2153188
+-- hash: 4923ac8bba97984a03b74644b86e7e0a32d674fd0cd841c7434988493502612e
 
 name:           travel-list
 version:        0.1.0.0
@@ -33,6 +33,7 @@ library
       src
   build-depends:
       base >=4.7 && <5
+    , directory
   default-language: Haskell2010
 
 executable travel-list-exe
@@ -44,6 +45,7 @@ executable travel-list-exe
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , directory
     , travel-list
   default-language: Haskell2010
 
@@ -57,5 +59,6 @@ test-suite travel-list-test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , directory
     , travel-list
   default-language: Haskell2010
