@@ -1,0 +1,16 @@
+# Are you going to the beach?
+- Pareo 
+- Water bottle
+- Snackies
+- Parasol
+- Cooler
+- Rash guards
+- Reading material
+- Bathing suit
+- Change of clothes (underwear + socks)
+- Sunglasses
+- Cap / cowboy hat Kyle
+- Sunblock
+- Neck scarf Kyle
+- Tissues for runny / bloody noses
+- Plastic bag for wet clothes 

@@ -1,0 +1,61 @@
+-- This file has been generated from package.yaml by hpack version 0.28.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 625fc31857cc425d2e4046807800746ba209e408a3bb3c7554f01285f2153188
+
+name:           travel-list
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/travel-list#readme>
+homepage:       https://github.com/githubuser/travel-list#readme
+bug-reports:    https://github.com/githubuser/travel-list/issues
+author:         Kyle Bedell
+maintainer:     kyle.bedell@gmail.com
+copyright:      2018 Kyle Bedell
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+extra-source-files:
+    ChangeLog.md
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/travel-list
+
+library
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_travel_list
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+  default-language: Haskell2010
+
+executable travel-list-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_travel_list
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , travel-list
+  default-language: Haskell2010
+
+test-suite travel-list-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_travel_list
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , travel-list
+  default-language: Haskell2010
