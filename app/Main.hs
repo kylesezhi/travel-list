@@ -8,6 +8,6 @@ main = do
   let directory = "./lists/"
   fileNames <- listDirectory directory
   let fullFilePaths = getFullFilePath fileNames directory
-  print $ fullFilePaths
   readFiles <- readTodoFiles fullFilePaths
-  print (parseTodoFiles readFiles)
+  let finalReadFiles = zipWith (\x y -> x ++ "\n" ++ y) fileNames readFiles
+  print (parseTodoFiles finalReadFiles)

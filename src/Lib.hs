@@ -16,7 +16,7 @@ parseTodoFiles :: [String] -> [ToDoFile]
 parseTodoFiles files = map (todoFileToRecord . lines) files
 
 todoFileToRecord :: [String] -> ToDoFile
-todoFileToRecord (x:xs) = ToDoFile "filename.md" x xs Nothing
+todoFileToRecord (x:xs) = ToDoFile x (xs!!0) (drop 1 xs) Nothing
 
 data ToDoFile = ToDoFile { filename :: String
     , question :: String
