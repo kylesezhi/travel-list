@@ -6,6 +6,8 @@ import System.Directory
 main :: IO ()
 main = do
   let directory = "./lists/"
-  files <- listDirectory directory
-  print $ getFullFilePath files directory
-  -- readFiles <- readTodoFiles files directory
+  fileNames <- listDirectory directory
+  let fullFilePaths = getFullFilePath fileNames directory
+  print $ fullFilePaths
+  readFiles <- readTodoFiles fullFilePaths
+  print (parseTodoFiles readFiles)

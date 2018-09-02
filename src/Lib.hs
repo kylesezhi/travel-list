@@ -1,15 +1,25 @@
 module Lib
-    ( getFullFilePath
+    ( getFullFilePath,
+    parseTodoFiles,
+    readTodoFiles
     ) where
 
--- readTodoFiles :: [String] -> String -> IO [String]
--- readTodoFiles files directory = map (\x -> readFile directory ++ x) files
+import System.IO
+
+readTodoFiles :: [String] -> IO [String]
+readTodoFiles files = mapM readFile files
 
 getFullFilePath :: [String] -> String -> [String]
 getFullFilePath files directory = map (\x -> directory ++ x) files
 
+parseTodoFiles :: [String] -> [ToDoFile]
+parseTodoFiles files = map (todoFileToRecord . lines) files
+
+todoFileToRecord :: [String] -> ToDoFile
+todoFileToRecord (x:xs) = ToDoFile "filename.md" x xs Nothing
+
 data ToDoFile = ToDoFile { filename :: String
     , question :: String
     , todos :: [String]
-    , include :: Bool
+    , include :: Maybe Bool
     } deriving (Show)
