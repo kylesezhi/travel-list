@@ -1,7 +1,8 @@
 module Lib
     ( getFullFilePath,
     parseTodoFiles,
-    readTodoFiles
+    readTodoFiles,
+    getTodoFromUser
     ) where
 
 import System.IO
@@ -16,7 +17,13 @@ parseTodoFiles :: [String] -> [ToDoFile]
 parseTodoFiles files = map (todoFileToRecord . lines) files
 
 todoFileToRecord :: [String] -> ToDoFile
-todoFileToRecord (x:xs) = ToDoFile x (xs!!0) (drop 1 xs) Nothing
+todoFileToRecord (x:xs) = ToDoFile x (xs !! 0) (drop 1 xs) Nothing
+
+getTodoFromUser :: ToDoFile -> IO ToDoFile
+getTodoFromUser toDo = do
+    putStrLn (question toDo)
+    value <- getLine
+    return value
 
 data ToDoFile = ToDoFile { filename :: String
     , question :: String

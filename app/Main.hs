@@ -10,4 +10,8 @@ main = do
   let fullFilePaths = getFullFilePath fileNames directory
   readFiles <- readTodoFiles fullFilePaths
   let finalReadFiles = zipWith (\x y -> x ++ "\n" ++ y) fileNames readFiles
-  print (parseTodoFiles finalReadFiles)
+  let parsedTodoFiles = parseTodoFiles finalReadFiles
+  responses <- mapM getTodoFromUser parsedTodoFiles
+  print responses
+  -- print parsedTodoFiles
+  -- getTodoFromUser . head $ parsedTodoFiles
