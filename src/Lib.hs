@@ -19,11 +19,19 @@ parseTodoFiles files = map (todoFileToRecord . lines) files
 todoFileToRecord :: [String] -> ToDoFile
 todoFileToRecord (x:xs) = ToDoFile x (xs !! 0) (drop 1 xs) Nothing
 
+yesOrNo :: String -> Maybe Bool
+yesOrNo input
+    | input == "y" = Just True
+    | input == "yes" = Just True
+    | input == "n" = Just False
+    | input == "no" = Just False
+    | otherwise = Nothing
+
 getTodoFromUser :: ToDoFile -> IO ToDoFile
 getTodoFromUser toDo = do
     putStrLn (question toDo)
     value <- getLine
-    return value
+    return toDo { include = yesOrNo value}
 
 data ToDoFile = ToDoFile { filename :: String
     , question :: String

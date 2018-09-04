@@ -2,6 +2,8 @@ module Main where
 
 import Lib
 import System.Directory
+import Data.Typeable
+import Data.Maybe
 
 main :: IO ()
 main = do
@@ -13,5 +15,8 @@ main = do
   let parsedTodoFiles = parseTodoFiles finalReadFiles
   responses <- mapM getTodoFromUser parsedTodoFiles
   print responses
-  -- print parsedTodoFiles
-  -- getTodoFromUser . head $ parsedTodoFiles
+  -- let onlyYes = [x | x <- responses, x.include == Just True]
+  -- let onlyYes = filter (\x -> include x == Just True) responses
+  -- print onlyYes
+  -- print . typeOf $ responses
+  -- print filter (\x -> include x) responses
