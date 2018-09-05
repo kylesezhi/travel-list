@@ -15,6 +15,8 @@ main = do
   let parsedTodoFiles = parseTodoFiles finalReadFiles
   responses <- mapM getTodoFromUser parsedTodoFiles
   print responses
+  let yeses = onlyYes responses
+  print yeses
   -- let onlyYes = [x | x <- responses, x.include == Just True]
   -- let onlyYes = filter (\x -> include x == Just True) responses
   -- print onlyYes

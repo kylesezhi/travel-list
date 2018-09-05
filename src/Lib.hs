@@ -2,7 +2,8 @@ module Lib
     ( getFullFilePath,
     parseTodoFiles,
     readTodoFiles,
-    getTodoFromUser
+    getTodoFromUser,
+    onlyYes
     ) where
 
 import System.IO
@@ -32,6 +33,12 @@ getTodoFromUser toDo = do
     putStrLn (question toDo)
     value <- getLine
     return toDo { include = yesOrNo value}
+
+onlyYes :: [ToDoFile] -> [ToDoFile]
+onlyYes x = filter isYes x
+    where
+      isYes ToDoFile {include=Just True} = True
+      isYes _ = False
 
 data ToDoFile = ToDoFile { filename :: String
     , question :: String
