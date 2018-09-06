@@ -3,10 +3,12 @@ module Lib
     parseTodoFiles,
     readTodoFiles,
     getTodoFromUser,
-    onlyYes
+    onlyYes,
+    formatToPrint
     ) where
 
 import System.IO
+import Data.List
 
 readTodoFiles :: [String] -> IO [String]
 readTodoFiles files = mapM readFile files
@@ -19,6 +21,12 @@ parseTodoFiles files = map (todoFileToRecord . lines) files
 
 todoFileToRecord :: [String] -> ToDoFile
 todoFileToRecord (x:xs) = ToDoFile x (xs !! 0) (drop 1 xs) Nothing
+
+formatToPrint :: [ToDoFile] -> String
+formatToPrint xs = foldr (++) "" (formatTodoToPrint xs)
+
+formatTodoToPrint :: [ToDoFile] -> [String]
+formatTodoToPrint xs = map (\x -> filename x ++ "\n" ++ (intercalate "\n" (todos x)) ++ "\n\n") xs
 
 yesOrNo :: String -> Maybe Bool
 yesOrNo input

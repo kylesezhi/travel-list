@@ -5,5 +5,5 @@
 - `stack setup`
 
 ## Build and run
-- `stack build`
+- `stack build --file-watch`
 - `stack exec travel-list-exe`
