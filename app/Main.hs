@@ -8,7 +8,7 @@ import Data.Maybe
 main :: IO ()
 main = do
   let directory = "./lists/"
-  let outputFile = directory ++ "output.txt"
+  let outputFile = directory ++ "output.md"
   fileNames <- listDirectory directory
   let fullFilePaths = getFullFilePath fileNames directory
   readFiles <- readTodoFiles fullFilePaths

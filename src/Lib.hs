@@ -26,7 +26,7 @@ formatToPrint :: [ToDoFile] -> String
 formatToPrint xs = foldr (++) "" (formatTodoToPrint xs)
 
 formatTodoToPrint :: [ToDoFile] -> [String]
-formatTodoToPrint xs = map (\x -> filename x ++ "\n" ++ (intercalate "\n" (todos x)) ++ "\n\n") xs
+formatTodoToPrint xs = map (\x -> "### " ++ filename x ++ "\n" ++ (intercalate "\n" (todos x)) ++ "\n\n") xs
 
 yesOrNo :: String -> Maybe Bool
 yesOrNo input
